@@ -6,11 +6,11 @@
 
 1.
 fun main() {
-    val result=largerNum(56,78)
+    val result = largerNum(56,78)
     println("$result is larger between two given number")
 }
 fun largerNum(Num1: Int,Num2: Int): Int{
-    if (Num1>Num2)
+    if (Num1 > Num2)
         return Num1
     return Num2
 }
