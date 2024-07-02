@@ -1,0 +1,149 @@
+//Collections
+
+//1.Write a function that takes a list of integers and returns a new list with the elements in reverse order.
+fun reverseList(input: List<Int>): List<Int> {
+    val reverseList = mutableListOf<Int>()
+    val start = 0
+    val end = input.size - 1
+    for (i in end downTo start) {
+        reverseList.add(input[i])
+    }
+    return reversedList
+}
+fun main() {
+   val oriList = listOf(1, 2, 3, 4, 5)
+   val revsList  = reverseList(oriList)
+    println("Original list: $oriList")
+    println("Reversed list: $revsList")
+}
+
+//2.Write a function that takes a list of integers and an integer n, and returns a new list with all elements less than n removed.
+fun greaterthanN(input: List<Int>, n: Int): List<Int> {
+    return input.filter { it >= n }
+}
+fun main() {
+    val orgList: List<Int> = listOf(1,2,3,4,5,6,7,8,9,10)
+    val filteredList = greaterthanN(orgList,5)
+    println(filteredList)
+}
+//3.Write a function that takes a list of strings and returns a map where the keys are the strings and the values are their lengths.
+fun stringLengthMap(input: List<String>): Map<String, Int> {
+    val newList = mutableMapOf<String, Int>()
+    for (i in input) {
+        newList[i] = i.length
+    }
+    return newList
+}
+fun main() {
+    val orgList = listOf("Avipsa", "Biswal","cse","silicon","internship")
+    println(stringLengthMap(orgList))
+}
+
+//4.Write a function that takes two lists of integers and returns true if the first list is a subset of the second list.
+fun subset(first: List<Int>, second: List<Int>): Boolean {
+    for (i in first) {
+        if (i !in second) {
+            return false
+        }
+    }
+    return true
+}
+fun main() {
+    val list1 = listOf(3, 2, 1, 4, 5)
+    val list2 = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    val sub = subset(list1, list2)
+    if (sub) {
+        println("List1 is a subset of List2.")
+    } else {
+        println("List1 is not a subset of List2.")
+    }
+}
+
+//5.Given a list of Person objects (each with name and age properties), sort the list first by age in ascending order
+//and then by name in alphabetical order if ages are equal.
+
+data class Person(val name: String, val age: Int)
+
+fun sortPeople(persons: List<Person>): List<Person> {
+    return persons.sortedWith(compareBy(Person::age, Person::name))
+}
+fun main() {
+    val persons = listOf(
+        Person("Avipsa", 30),
+        Person("Bobby", 25),
+        Person("Charlie", 25),
+        Person("Dany", 28),
+        Person("Elice", 30)
+    )
+    val sort = sortPeople(persons)
+    sort.forEach {
+        println("${it.name}, ${it.age} years old")
+    }
+}
+
+//Null Safety
+//1. Safe Calls and Elvis Operator
+//Write a function that takes a nullable string and returns its length if it is not null, or -1 if it is null.
+fun nullableString(s: String?): Int {
+    return s?.length ?: -1
+}
+fun main() {
+    var str: String? = "abed"
+    println("Value of nullable string is: ${nullableString(str)}")
+    str = null
+    println("Value of nullable string is: ${nullableString(str)}")
+}
+
+//2. Nullability and Collections
+//Given a list of nullable integers, write a function that returns a list of non-null integers. Use the filterNotNull function.
+fun nonNullFilter(input: List<Int?>): List<Int?> {
+    return input.filter { it != null }
+        return input.filterNotNull()
+}
+fun main() {
+    val l1 : List<Int?> = listOf(3, null, 2, null, 1, null, 4, 5)
+    println( nonNullFilter(l1))
+}
+
+//3. Handling Null with let
+//Write a function that takes a nullable string and prints its uppercase version if it is not null, otherwise prints “String is null”.
+fun upperOrNull(s: String?) {
+    s?.let { println(it.uppercase()) } ?: println("String is null")
+}
+fun main() {
+    var str: String? ="Tanu"
+    upperOrNull(str)
+    str = null
+    upperOrNull(str)
+}
+
+//4. Null Safety in Data Classes
+//Define a data class User with nullable properties name and email. Write a function that prints “Incomplete User” if any property is null, otherwise prints the user’s details.
+
+data class User(val name: String?, val email: String?)
+
+fun printUser(user: User) {
+    if (user.name != null && user.email != null) {
+        println("Complete User:")
+        println("Name: ${user.name}, Email: ${user.email}")
+    } else {
+        println("Incomplete User :(")
+    }
+}
+fun main() {
+    val user1 = User(name = "Aviuser", email = "biswal@gmail.com")
+    val user2 = User(name = null, email = "google@gmail.com")
+    printUser(user1)
+    println()
+    printUser(user2)
+}
+//5. Safe Casting with as?
+//Given a list of Any type, write a function that filters out all elements that are not strings and returns a list of strings.
+fun stringsFilters(anyList: List<Any>): List<String> {
+    return anyList.filterIsInstance<String>()
+}
+fun main() {
+    val anyList: List<Any> = listOf("Avi", 93, "User", 3.14, "Biswal", true)
+    val strList = stringsFilters(anyList)
+    strList.forEach { println(it) }
+}
