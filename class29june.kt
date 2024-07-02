@@ -4,18 +4,18 @@
 //Q3. Implement a function named isPalindrome that checks whether a given string is a palindrome (reads the same backward as forward).
 //Q4. Create a function factorial that takes an integer n and returns the factorial of n using recursion.
 
-1.
+//1
 fun main() {
-    val result=largerNum(56,78)
+    val result = largerNum(56,78)
     println("$result is larger between two given number")
 }
 fun largerNum(Num1: Int,Num2: Int): Int{
-    if (Num1>Num2)
+    if (Num1 > Num2)
         return Num1
     return Num2
 }
 
-2.
+//2
 fun main() {
     val list1 = listOf(1, 2, 3, 4, 5)
     val sum = sumOfList(list1)
@@ -30,7 +30,7 @@ fun sumOfList(list1: List<Int>): Int {
     return sum
 }
 
-4.
+//4
 fun main() {
     val result = fact(57)
     println("$result is the factorial of 18")
@@ -44,7 +44,7 @@ fun fact(n: Int): Long {
     }
 }
 
-3.
+//3
 fun main() {
 
     isPalindrome("MALAYALAM")
